@@ -17,7 +17,7 @@ const Experience = () => {
             link: 'https://becode.sk/',
             date: "2023 - 2024",
             description: "As a Software Architect and Account Manager at BeCode s.r.o., I collaborated closely with the broader development team, overseeing website design, content management, and SEO marketing initiatives. Additionally, I contributed to branding and logo design activities.",
-            techstack: ['nextjs', 'typescript', 'react', 'firebase', 'tailwind', 'nextjs', 'fastapi', 'django']
+            techstack: ['nextjs', 'typescript', 'react', 'firebase', 'tailwind', 'fastapi', 'django']
         },
 
         {

@@ -1,8 +1,6 @@
-import { BackgroundGradient } from "@/components/ui/background-gradient";
+"use client";
+
 import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
-import { Tabs } from "@/components/ui/tabs";
-import TechIcon from "@/components/ui/tech-icon";
-import { IconArrowWaveRightUp, IconBoxAlignRightFilled, IconBoxAlignTopLeft, IconBrandGithub, IconBrandLinkedin, IconClipboardCopy, IconFileBroken, IconLink, IconMail, IconPhone, IconSignature, IconTableColumn } from "@tabler/icons-react"; import Image from "next/image";
 import { Spotify } from "./components/spotify";
 import Experience from "./components/experience";
 import FavoriteTechnologyStack from "./components/technology";
@@ -10,16 +8,64 @@ import Contacts from "./components/contacts";
 import Projects from "./components/projects";
 import Hero from "./components/hero";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { cn } from "@/utils/cn";
+
 
 
 export default function Home() {
 
+  const sections = [
+    {
+      id: 'about',
+      title: 'About'
+    },
+    {
+      id: 'projects',
+      title: 'Projects'
+    },
+    {
+      id: 'experience',
+      title: 'Experience'
+    },
+    {
+      id: 'technologies',
+      title: 'Technologies'
+    },
+    {
+      id: 'contact',
+      title: 'Contact'
+    }
+  ]
+
+  const [inView, setInView] = useState<string | null>("about");
+
+  useEffect(() => {
+    var observer = new IntersectionObserver(function (entries) {
+
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          setInView(entry.target.id);
+          console.log(entry.target.id, "in view");
+        }
+      });
+      // Two targets are observed so entries.length may be 1 or 2
+      // entries.length will be 1 if thresholds of one of the targets is crossed
+      // entries.length will be 2 if thresholds of both targets are crossed
+    }, { threshold: [0.7] });
+
+    sections.forEach((section) => {
+      const element = document.querySelector(`#${section.id}`);
+      if (element) {
+        observer.observe(element);
+      }
+    });
+  }, []);
+
   return (
     <>
       <header>
-        <nav className="w-full flex justify-between py-8 container">
+        <nav className="w-full flex justify-between py-8 container mx-auto">
           <div>
           </div>
           {/* <div className="tac-one-regular text-4xl">Green Kiwi</div> */}
@@ -48,14 +94,10 @@ export default function Home() {
       <div className="container flex align-top mx-auto py-40 gap-40">
         <div className="navigation fixed">
           <ul className="text-lg flex flex-col gap-4">
-            <Link href="#about" className="py-4 px-8 bg-gradient-to-br from-gray-600 to-orange-600
-             rounded-xl"> About </Link>
-            <Link href="#projects" className="py-4 px-8  rounded-xl"> Projects </Link>
-            <Link href="#experience" className="py-4 px-8  rounded-xl"> Experience </Link>
-            <Link href="#technologies" className="py-4 px-8  rounded-xl"> Technologies </Link>
-            {/* <Link href="#blog" className="py-4 px-8  rounded-xl"> About </Link> */}
-            <Link href="#contact" className="py-4 px-8  rounded-xl"> Contact</Link>
-
+            {sections.map((section) => (
+              <Link key={section.id} href={`#${section.id}`} className={cn("py-4 px-8  rounded-xl transition-all", inView === section.id ? "bg-gradient-to-br from-gray-600 to-orange-600" : "")}
+              > {section.title} </Link>
+            ))}
           </ul>
         </div>
         <div className="w-32"></div>
@@ -69,7 +111,7 @@ export default function Home() {
           <Contacts />
 
         </main>
-      </div>
+      </div >
 
     </>
   );
