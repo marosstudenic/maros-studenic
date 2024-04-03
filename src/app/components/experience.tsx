@@ -63,7 +63,7 @@ const Experience = () => {
                         <p className="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">{item.description}</p>
                         <div className="mb-4 text-base font-normal text-gray-500 dark:text-gray-400 space-y-4">
                             <p>Tech Stack:</p>
-                            <div className="flex gap-6">
+                            <div className="flex gap-6 flex-wrap">
                                 {item.techstack.map((tech) => <TechIcon key={tech} name={tech} />)}
                             </div>
                         </div>

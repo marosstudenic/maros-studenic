@@ -10,6 +10,8 @@ import Hero from "./components/hero";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { cn } from "@/utils/cn";
+import ContactForm from "./components/contact-form";
+import Footer from "./components/footer";
 
 
 
@@ -65,34 +67,38 @@ export default function Home() {
   return (
     <>
       <header>
-        <nav className="w-full flex justify-between py-8 container mx-auto">
+        <nav className="w-full flex justify-between max-sm:justify-center py-8 container mx-auto">
           <div>
           </div>
           {/* <div className="tac-one-regular text-4xl">Green Kiwi</div> */}
           <div className="flex gap-2">
-            <HoverBorderGradient
-              containerClassName="rounded-full"
-              as="button"
-              className="dark:bg-background bg-white text-black dark:text-white flex items-center space-x-2"
-            >
-              <span>Contact me</span>
-            </HoverBorderGradient>
+            <a href="#contact" >
+              <HoverBorderGradient
+                containerClassName="rounded-full"
+                as="button"
+                className="dark:bg-background bg-white text-black dark:text-white flex items-center space-x-2"
+              >
+                <span>Contact me</span>
+              </HoverBorderGradient>
+            </a>
 
-            <HoverBorderGradient
-              containerClassName="rounded-full"
-              as="button"
-              className="dark:bg-background bg-white text-orange-500 dark:text-orange-500 flex items-center space-x-2"
-            >
-              <span>Download CV</span>
-            </HoverBorderGradient>
+            <a href="/maros-studenic.pdf" download>
+              <HoverBorderGradient
+                containerClassName="rounded-full"
+                as="button"
+                className="dark:bg-background bg-white text-orange-500 dark:text-orange-500 flex items-center space-x-2"
+              >
+                <span>Download CV</span>
+              </HoverBorderGradient>
+            </a>
 
 
           </div>
         </nav>
-      </header>
+      </header >
 
       <div className="container flex align-top mx-auto py-40 gap-40">
-        <div className="navigation fixed">
+        <div className="navigation fixed max-md:hidden">
           <ul className="text-lg flex flex-col gap-4">
             {sections.map((section) => (
               <Link key={section.id} href={`#${section.id}`} className={cn("py-4 px-8  rounded-xl transition-all", inView === section.id ? "bg-gradient-to-br from-gray-600 to-orange-600" : "")}
@@ -100,8 +106,8 @@ export default function Home() {
             ))}
           </ul>
         </div>
-        <div className="w-32"></div>
-        <main className="space-y-60 flex-1">
+        <div className="w-32 max-md:hidden"></div>
+        <main className="space-y-20 md:space-y-60 flex-1 max-md:px-8">
 
           <Hero />
           <Projects />
@@ -109,9 +115,11 @@ export default function Home() {
           <FavoriteTechnologyStack />
           <Spotify />
           <Contacts />
+          {/* <ContactForm /> */}
 
         </main>
       </div >
+      <Footer />
 
     </>
   );

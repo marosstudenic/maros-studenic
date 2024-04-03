@@ -13,7 +13,7 @@ export const Spotify = () => {
             setData(data);
         }
         fetchData();
-    });
+    }, []);
     return (
         <section className="border-t-gray-600 border-b-gray-600 border-t-2 border-b-2 py-4">
             <div className="flex gap-4">
