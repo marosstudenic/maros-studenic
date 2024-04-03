@@ -13,10 +13,10 @@ const ContactForm = () => {
         <div className="max-w-4xl w-full max-sm:mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input  bg-black">
             <h2 className="font-bold text-xl text-neutral-800 dark:text-neutral-200">
 
-                Would you like to share a message with me? Or perhaps you have a project in mind that you'd like to discuss? Let's chat!
+                Would you like to share a message with me? Or perhaps you have a project in mind that you&apos;d like to discuss? Let&apos;s chat!
             </h2>
             <p className="text-neutral-600 text-sm max-w-sm mt-2 dark:text-neutral-300">
-                Don't hesitate to contact me. I will be happy to help you with your project.
+                Don&apos;t hesitate to contact me. I will be happy to help you with your project.
             </p>
 
             <form className="my-8" onSubmit={handleSubmit}>

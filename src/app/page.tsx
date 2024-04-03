@@ -12,7 +12,7 @@ import { useEffect, useState } from "react";
 import { cn } from "@/utils/cn";
 import ContactForm from "./components/contact-form";
 import Footer from "./components/footer";
-
+import { Metadata } from "next";
 
 
 export default function Home() {
