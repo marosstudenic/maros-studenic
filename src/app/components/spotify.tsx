@@ -9,8 +9,16 @@ export const Spotify = () => {
     useEffect(() => {
         const fetchData = async () => {
             const response = await fetch("/api/get-current-song");
-            const data = await response.json();
-            setData(data);
+            try {
+                if (!response.ok) {
+                    throw new Error("Failed to get current song");
+                }
+                const data = await response.json();
+                setData(data);
+            } catch (error) {
+                console.error(error);
+
+            }
         }
         fetchData();
     }, []);
@@ -40,6 +48,11 @@ export const Spotify = () => {
                 </div>
 
 
+            </div>}
+
+            {!data && <div className="flex gap-8 items-center">
+                <div className="h-40 w-40 bg-gray-500 animate-pulse max-md:hidden "></div>
+                <p className="text-gray-500 animate-pulse text-sm max-w-sm">There is only silence - nothing playing now, I am probably trying to understand the code I wrote two weeks ago.</p>
             </div>}
         </section>
     );

@@ -9,6 +9,8 @@ const TOKEN_ENDPOINT = 'https://accounts.spotify.com/api/token';
 const client_id = process.env.SPOTIFY_CLIENT_ID;
 const client_secret = process.env.SPOTIFY_CLIENT_SECRET;
 const refresh_token = process.env.SPOTIFY_REFRESH_TOKEN;
+// https://accounts.spotify.com/en/authorize?client_id=de6639a10c114561a57008b21f0075fc&response_type=code&redirect_uri=http%3A%2F%2Flocalhost:3000&scope=user-read-currently-playing
+
 const getAccessToken = async () => {
     //Creates a base64 code of client_id:client_secret as required by the API
     const basic = Buffer.from(`${client_id}:${client_secret}`).toString('base64');
@@ -28,12 +30,42 @@ const getAccessToken = async () => {
 
     if (response.ok) {
         const data = await response.json();
+        console.log(data, "access token");
         return data.access_token;
     } else {
         throw new Error('Failed to get access token');
     }
 
 };
+
+
+const getRefreshTokenWithCode = async (code: string) => {
+    //Creates a base64 code of client_id:client_secret as required by the API
+    const basic = Buffer.from(`${client_id}:${client_secret}`).toString('base64');
+
+    //The response will contain the access token
+    const response = await fetch(TOKEN_ENDPOINT, {
+        method: 'POST',
+        headers: {
+            Authorization: `Basic ${basic}`,
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: querystring.stringify({
+            grant_type: 'authorization_code',
+            code,
+            redirect_uri: 'http://localhost:3000',
+        }),
+    });
+
+    if (response.ok) {
+        const data = await response.json();
+        console.log(data, "access token");
+        return data
+    } else {
+        throw new Error('Failed to get access token');
+    }
+
+}
 
 
 type PlayingResponse = {
@@ -62,8 +94,11 @@ export type MySongType = {
 }
 
 const retrieveDataFromResponse = async (response: Response): Promise<MySongType | null> => {
-    if (response.ok) {
+
+
+    if (response.ok && response.body) {
         const data: PlayingResponse = await response.json();
+        console.log(data, "data")
         const album = data.item.album;
         const name = data.item.name;
         const picture = album.images[1].url;
@@ -77,14 +112,22 @@ const retrieveDataFromResponse = async (response: Response): Promise<MySongType 
         // Rest of the code...
 
     } else {
-        throw new Error('Failed to get current song');
+        return null;
     }
 }
 
 export async function GET(request: Request) {
-    // const accessToken = await getAccessAuthorizedToken();
+    // const response = await getRefreshTokenWithCode("AQDZ4mXEBVdAMghFcjUrkO_kl9ObA5WqdPebNULE-qBZrd30lARC0xBSsN9Kd-MBxvwjS0Lh2-e233wAV7HyEH9DYz5CxyZeNBPJR_vwYJmq1X2jl5mx7XsKPgMMAcwtLUs_uR2npWx-fQ3QCZjSF8xeqgTWDI8IZlarSq4IU-53NXiE97hfGiw8Um9kamdgxxOAwyms");
+    // console.log(response, "response");
+
+    // return new Response(JSON.stringify(response), {
+    //     headers: {
+    //         'Content-Type': 'application/json',
+    //     },
+    // });
 
     const accessToken = await getAccessToken();
+
 
     console.log(accessToken, "accessToken");
 
@@ -94,6 +137,7 @@ export async function GET(request: Request) {
             Authorization: `Bearer ${accessToken}`,
         },
     });
+
 
     if (response.ok) {
         const title = await retrieveDataFromResponse(response);
@@ -105,7 +149,11 @@ export async function GET(request: Request) {
             },
         });
     } else {
-        throw new Error('Failed to get current song');
+        return new Response(JSON.stringify({}), {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
     }
 
 
