@@ -76,7 +76,7 @@ export default function Home() {
               <HoverBorderGradient
                 containerClassName="rounded-full"
                 as="button"
-                className="dark:bg-background bg-white text-black dark:text-white flex items-center space-x-2"
+                className="bg-background  text-white flex items-center space-x-2"
               >
                 <span>Contact me</span>
               </HoverBorderGradient>
@@ -86,7 +86,7 @@ export default function Home() {
               <HoverBorderGradient
                 containerClassName="rounded-full"
                 as="button"
-                className="dark:bg-background bg-white text-orange-500 dark:text-orange-500 flex items-center space-x-2"
+                className="bg-background text-orange-500 flex items-center space-x-2"
               >
                 <span>Download CV</span>
               </HoverBorderGradient>
@@ -97,7 +97,7 @@ export default function Home() {
         </nav>
       </header >
 
-      <div className="container flex align-top mx-auto py-40 gap-40">
+      <div className="container flex align-top mx-auto py-12 md:py-40  md:gap-40 text-white">
         <div className="navigation fixed max-md:hidden">
           <ul className="text-lg flex flex-col gap-4">
             {sections.map((section) => (

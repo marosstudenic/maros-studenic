@@ -23,7 +23,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link href="https://fonts.googleapis.com/css2?family=Caveat&family=Tac+One&display=swap" rel="stylesheet" />
       </head>
-      <body className={cn(inter.className, "dark")}>{children}</body>
+      <body className={cn(inter.className, "dark", "w-full overflow-x-hidden")}>{children}</body>
     </html>
   );
 }
