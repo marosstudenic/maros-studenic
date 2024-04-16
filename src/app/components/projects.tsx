@@ -70,8 +70,8 @@ const Projects = () => {
                         <a href="https://amplion.eu/" target="_blank" className="text-white underline text-sm flex gap-2 mt-4 cursor-pointer"><IconLink />amplion.eu</a>
                     </div>
                     <Image
-                        src="/projects/amplion2.png"
-                        alt="3un.eu"
+                        src="/projects/amplion3.png"
+                        alt="amplion.eu"
                         width="1000"
                         height="1000"
                         className="object-cover object-left-top md:h-[90%]  w-[98%] rounded-xl mx-auto z-0"
