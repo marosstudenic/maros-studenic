@@ -131,7 +131,7 @@ const Projects = () => {
             <section id="projects" className="py-12 lg:hidden">
                 {tabs.map((tab, idx) => (
                     <div key={tab.title} className="my-8">
-                        <h3 className="text-4xl font-bold mb-8">{tab.title}</h3>
+                        <h3 className="text-2xl font-bold mb-8">{tab.title}</h3>
                         {tab.content}
                     </div>
                 ))}
