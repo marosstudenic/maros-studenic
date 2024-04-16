@@ -53,15 +53,15 @@ const Experience = () => {
             <h2 className="text-4xl mb-4">Experience</h2>
 
 
-            <ol className="relative border-s border-gray-200 dark:border-gray-700 max-w-3xl">
+            <ol className="relative border-s border-gray-700 max-w-3xl">
                 {experiences.map((item, index) => (
                     <li key={index} className="mb-10 ms-4">
-                        <div className="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
-                        <time className="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">{item.date}</time>
-                        <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{item.company}</h3>
-                        <p className="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">{item.title}</p>
-                        <p className="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">{item.description}</p>
-                        <div className="mb-4 text-base font-normal text-gray-500 dark:text-gray-400 space-y-4">
+                        <div className="absolute w-3 h-3  rounded-full mt-1.5 -start-1.5 border border-gray-900 bg-gray-700"></div>
+                        <time className="mb-1 text-sm font-normal leading-none text-gray-500">{item.date}</time>
+                        <h3 className="text-lg font-semibold text-white">{item.company}</h3>
+                        <p className="mb-4 text-base font-normal text-gray-400">{item.title}</p>
+                        <p className="mb-4 text-base font-normal text-gray-400">{item.description}</p>
+                        <div className="mb-4 text-base font-normal text-gray-400 space-y-4">
                             <p>Tech Stack:</p>
                             <div className="flex gap-6 flex-wrap">
                                 {item.techstack.map((tech) => <TechIcon key={tech} name={tech} />)}
