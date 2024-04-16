@@ -97,7 +97,7 @@ export default function Home() {
         </nav>
       </header >
 
-      <div className="container flex align-top mx-auto py-12 md:py-40  md:gap-40 text-white">
+      <div className="container md:flex align-top mx-auto py-12 md:py-40  md:gap-40 text-white">
         <div className="navigation fixed max-md:hidden">
           <ul className="text-lg flex flex-col gap-4">
             {sections.map((section) => (
