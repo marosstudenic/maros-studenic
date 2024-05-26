@@ -41,7 +41,7 @@ export default function Home() {
               </HoverBorderGradient>
             </a>
 
-            <a href="/maros-studenic.pdf" download>
+            <a href="/maros-studenic-cv.pdf" download>
               <HoverBorderGradient
                 containerClassName="rounded-full"
                 as="button"

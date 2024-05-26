@@ -18,7 +18,6 @@ const Contacts = () => {
                         <p className="text-base sm:text-xl mt-4 mb-2 text-neutral-200">
                             +421 917 481 025
                         </p>
-                        <p className="text-gray-400">hello@fullstack-developer.sk</p>
                         <p className="text-gray-400">studenic.maros@gmail.com</p>
                     </BackgroundGradient>
                 </a>
