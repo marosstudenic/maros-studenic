@@ -2,40 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+:root { --paper: #090b0f; --ink: #f4f5f1; --orange: #9ce6b0; }
+html { scroll-behavior: smooth; }
+body { background: var(--paper); color: var(--ink); }
+@layer components {
+  .nav-link { @apply transition hover:text-orange; }
+  .eyebrow { @apply font-mono text-xs uppercase tracking-[.18em] text-ink/55; }
+  .section-title { @apply mt-5 font-display text-6xl leading-[.9] tracking-[-.05em] sm:text-7xl; }
+  .section-title em { @apply font-normal text-orange; }
+  .contact-link { @apply flex items-center gap-2 border-b border-ink/20 pb-2 transition hover:border-orange hover:text-orange; }
 }
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
-html {
-  /* smooth scrolling */
-  scroll-behavior: smooth;
-
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: #221F1F;
-}
-
-
-.tac-one-regular {
-  font-family: "Tac One", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-}
+.status-dot { width: 8px; height: 8px; border-radius: 999px; background: #9ce6b0; box-shadow: 0 0 0 4px #9ce6b022; }
+::selection { background: var(--orange); color: var(--paper); }
