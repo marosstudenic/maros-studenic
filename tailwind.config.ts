@@ -14,8 +14,12 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "#221F1F"
+        background: "#090b0f",
+        paper: "#090b0f",
+        ink: "#f4f5f1",
+        orange: "#9ce6b0",
       },
+      fontFamily: { display: ["var(--font-display)", "sans-serif"] },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
