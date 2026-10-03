@@ -35,7 +35,17 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
-## PDF open counter
+## Shared Convex backend
+
+The `fullstack-developer` Convex project is the shared backend for applications
+on fullstack-developer.sk. Project dashboard:
+https://dashboard.convex.dev/t/marosstudenic/fullstack-developer
+
+The Zavod crossword is the first application, implemented by the `pdf` function
+module and the `pdfTotals` / `pdfDaily` tables. Additional applications can add
+their own function modules and tables within the same project.
+
+### PDF open counter
 
 `/zavod-tajnicka.pdf` proxies the original solved crossword through the production
 Convex HTTP action. It remains an inline PDF at the same URL. The `beforeFiles`
