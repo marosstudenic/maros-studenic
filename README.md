@@ -34,3 +34,29 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## PDF open counter
+
+`/zavod-tajnicka.pdf` proxies the original solved crossword through the production
+Convex HTTP action. It remains an inline PDF at the same URL. The `beforeFiles`
+rewrite overrides the copy in `public/`; `no-store` headers ensure repeat requests
+reach the counter.
+
+Production dashboard: https://dashboard.convex.dev/d/festive-mandrill-700/data
+
+- `pdfTotals.opens`: cumulative opens since tracking was enabled.
+- `pdfDaily`: daily counts, using UTC dates.
+- `pdf:stats`: internal query available through the authenticated dashboard or
+  `npx convex run pdf:stats --prod`.
+
+Only aggregate counts and timestamps are stored. No cookies, IP addresses, user
+agents, or visitor identifiers are stored. HEAD requests, subsequent nonzero
+range requests, and known crawler/preview user agents do not increment the
+counter. The count represents PDF requests, rather than unique people or a
+guarantee that the document was read. Concurrent increments are transactional.
+
+To update the PDF, replace `public/zavod-tajnicka.pdf` and run `npm run pdf:upload`.
+This uploads the document into Convex storage and updates `PDF_STORAGE_ID` on the
+production deployment. To update the backend, run `npm run convex:deploy` from an
+authenticated checkout. Frontend changes deploy through the existing Vercel/Git
+integration; no Convex admin key is embedded in the site.

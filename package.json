@@ -6,11 +6,15 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "convex:dev": "convex dev",
+    "convex:deploy": "convex deploy",
+    "pdf:upload": "node scripts/upload-pdf.mjs --prod"
   },
   "dependencies": {
     "@tabler/icons-react": "^3.1.0",
     "clsx": "^2.1.0",
+    "convex": "^1.46.0",
     "lucide-react": "^1.28.0",
     "next": "14.1.4",
     "react": "^18",
