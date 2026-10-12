@@ -271,3 +271,8 @@
 .projectScreenshot { object-fit:contain; transition:transform .55s ease; }
 .projectImage:hover .projectScreenshot { transform:scale(1.025); }
 @media print { .projectImage { max-height:140px; } }
+
+.projectButton { display:inline-flex; align-items:center; justify-content:center; gap:16px; align-self:flex-start; margin-top:auto; padding:13px 22px; border-radius:999px; background:var(--ink); color:#090b0f; font-size:12px; font-weight:600; }
+.projectButton:hover { background:var(--mint); transform:translateY(-2px); }
+.caseStudy .productMotion { margin-bottom:24px; }
+@media print { .projectButton { border:1px solid #ccc; background:white; color:#111; } }
