@@ -4,6 +4,7 @@ import { ArrowUpRight, ArrowRight, Workflow, Bot, Database, Blocks, Phone, MoveU
 import { IconBrandGithub, IconBrandLinkedin } from '@tabler/icons-react';
 import { CvActions, CvMotion, WorkflowExplorer } from '../cv-interactions';
 import styles from '../cv.module.css';
+import { Logo } from '@/components/logo';
 
 export const metadata: Metadata = {
   title: 'Maroš Studenič | AI & Automation Development',
@@ -20,7 +21,7 @@ const services = [
 export default function ServicesPage() {
   return <div className={styles.page}>
     <CvMotion />
-    <header className={styles.header}><Link href="/" className={styles.identity}><span className={styles.identityMark}>ms<span>↗</span></span><span>Maroš Studenič<small>AI & automation development</small></span></Link><nav aria-label="Services navigation"><a href="#services">What I build</a><a href="#work">Selected work</a><a href="#contact" className={styles.navContact}>Let’s talk <ArrowUpRight size={15} /></a></nav><CvActions /></header>
+    <header className={styles.header}><Link href="/" className={styles.identity}><Logo /></Link><nav aria-label="Services navigation"><a href="#services">What I build</a><a href="#work">Selected work</a><a href="#contact" className={styles.navContact}>Let’s talk <ArrowUpRight size={15} /></a></nav><CvActions /></header>
     <main>
       <section className={styles.hero} aria-labelledby="services-title">
         <div className={styles.heroInner}>
