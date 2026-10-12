@@ -1,5 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    async headers() {
+        return [{
+            source: '/cv/:path*',
+            headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow, noarchive' }],
+        }];
+    },
     async rewrites() {
         return {
             // Run before public files so every open reaches the Convex counter.
